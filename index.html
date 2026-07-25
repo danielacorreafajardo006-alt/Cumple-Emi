@@ -21,9 +21,17 @@
             border: 4px solid #e31837; /* Rojo Mickey */
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
+        .header-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
         h1 {
             color: #e31837;
             font-size: 2.5em;
+            margin-top: 10px;
         }
         h2 {
             color: #000000;
@@ -64,7 +72,6 @@
             color: #e31837;
             margin-bottom: 15px;
         }
-        /* Contenedor y diseño de los nuevos botones de WhatsApp */
         .whatsapp-container {
             display: flex;
             flex-direction: column;
@@ -91,26 +98,27 @@
             background-color: #128C7E;
             transform: scale(1.03);
         }
-        /* Reproductor de música discreto en la parte inferior */
-        .audio-player {
-            margin-top: 30px;
-            background: #f1f1f1;
-            padding: 10px;
-            border-radius: 30px;
-            display: inline-block;
+        /* Contenedor del video musical de YouTube */
+        .music-container {
+            margin-top: 25px;
+            padding: 12px;
+            background-color: #f1f1f1;
+            border-radius: 15px;
+        }
+        .music-title {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #555555;
+            margin-bottom: 8px;
         }
     </style>
 </head>
 <body>
-    <!-- Elemento de audio con música de Mickey Mouse en bucle -->
-    <!-- Nota importante: La mayoría de navegadores modernos bloquean el sonido automático (autoplay) -->
-    <!-- hasta que el usuario hace su primer clic en la pantalla por políticas de privacidad. -->
-    <audio id="mickey-music" autoplay loop controls class="audio-player">
-        <source src="https://mixkit.co" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
-    </audio>
 
     <div class="invitation-card">
+        <!-- IMAGEN DE MICKEY MOUSE -->
+        <img src="https://ibb.co" alt="Mickey Mouse" class="header-image">
+
         <h1>¡Emi cumple 1 añito! 🎈🐭</h1>
         <p>Hace un año llegó a nuestras vidas el mejor regalo y queremos celebrar este momento tan especial junto a las personas que más queremos.</p>
         
@@ -132,7 +140,6 @@
         
         <p class="rsvp">📲 Confirma tu asistencia por WhatsApp:</p>
         <div class="whatsapp-container">
-            <!-- Enlaces directos a WhatsApp con mensajes predeterminados -->
             <a href="https://wa.me" class="btn-whatsapp" target="_blank">
                 💬 Escríbele a Dani
             </a>
@@ -141,19 +148,14 @@
             </a>
         </div>
         
+        <!-- REPRODUCTOR DE LA MOUSEKEMARCHA DE YOUTUBE -->
+        <div class="music-container">
+            <div class="music-title">🎵 ¡Dale Play para bailar la Mousekemarcha!:</div>
+            <iframe width="100%" height="80" src="https://youtube.com" title="La Mousekemarcha" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 10px;"></iframe>
+        </div>
+
         <p style="margin-top: 25px;"><strong>¡Esperamos contar con tu compañía para celebrar el primer añito de Emiliano! 🎂🎈💙</strong></p>
     </div>
 
-    <!-- Script opcional para intentar forzar la reproducción tras el primer clic en la pantalla si el navegador la bloquea -->
-    <script>
-        document.addEventListener('click', function() {
-            var audio = document.getElementById('mickey-music');
-            if (audio.paused) {
-                audio.play().catch(function(error) {
-                    console.log("La reproducción automática fue bloqueada por el navegador.");
-                });
-            }
-        }, { once: true }); // Se ejecuta solo la primera vez que hacen clic
-    </script>
 </body>
 </html>
